@@ -14,18 +14,21 @@ async function processLineByLine() {
     let miniArray = []
     for await (const line of rl) {
         // Each line in input.txt will be successively available here as `line`.
-        // console.log(`Line from file: ${+line}`)
 
         if (+line !== 0) {
             miniArray.push(+line)
         } else if (+line === 0) {
             arrayOfSums.push(miniArray)
+
             miniArray = []
         }
     }
+    arrayOfSums.push(miniArray)
 
+    console.log(arrayOfSums)
     // find the sum of each array in arrayOfSums  https://bobbyhadz.com/blog/javascript-get-sum-of-array-of-numbers
     let arrayOfVals = []
+
     for (let i = 0; i < arrayOfSums.length; i++) {
         const sum = arrayOfSums[i].reduce((accumulator, value) => {
             return accumulator + value
@@ -35,7 +38,13 @@ async function processLineByLine() {
     }
 
     // find the max value https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
-    console.log(Math.max(...arrayOfVals))
+
+    let sortedArray = arrayOfVals.sort()
+    let arraySortedHighLow = sortedArray.reverse()
+
+    console.log(
+        arraySortedHighLow[0] + arraySortedHighLow[1] + arraySortedHighLow[2]
+    )
 }
 
 processLineByLine()
