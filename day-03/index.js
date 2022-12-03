@@ -1,6 +1,8 @@
 const fs = require('node:fs')
 const readline = require('node:readline')
 
+const { upperCaseMap, lowerCaseMap } = require('./maps.js')
+
 let count = 0
 
 async function processLineByLine() {
