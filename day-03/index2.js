@@ -2,7 +2,6 @@ const fs = require('node:fs')
 const readline = require('node:readline')
 
 const { upperCaseMap, lowerCaseMap } = require('./maps.js')
-console.log(upperCaseMap)
 
 let count = 0
 
@@ -22,8 +21,6 @@ async function processLineByLine() {
         // Each line in input.txt will be successively available here as `line`.
         // console.log(`Line from file: ${line}`)
 
-        // https://flaviocopes.com/how-to-cut-array-half-javascript/
-
         if (miniArray.length < 2) {
             miniArray.push(line)
         } else {
@@ -38,8 +35,6 @@ async function processLineByLine() {
     }
 
     for (let i = 0; i < arrayOfThrees.length; i++) {
-        // console.log('ARRAY', arrayOfThrees)
-
         function match(firstLine, secondLine, thirdLine) {
             for (let i in secondLine) {
                 if (
