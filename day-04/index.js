@@ -16,12 +16,9 @@ async function processLineByLine() {
 
     for await (const line of rl) {
         let splitArray = line.split(',')
-        console.log('splitArray', splitArray)
         let firstArray = splitArray[0].split('-')
         let secondArray = splitArray[1].split('-')
-        console.log('firstArr', firstArray)
-        console.log('secondArr', secondArray)
-        console.log('firstel', typeof +firstArray[0], 'secondel', firstArray[1])
+
         if (
             +firstArray[0] >= +secondArray[0] &&
             +firstArray[1] <= +secondArray[1]
