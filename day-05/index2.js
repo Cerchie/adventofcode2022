@@ -49,27 +49,31 @@ async function processLineByLine() {
             sourceColumn = finalChop.charAt(0)
         }
 
-        for (let i = 0; i < numberToMove; i++) {
-            if (Object.keys(stackObject).includes(`stack${sourceColumn}`)) {
-                let returnedLetterArray = stackObject[`stack${sourceColumn}`]
-                let letterToAdd = returnedLetterArray.pop()
+        if (Object.keys(stackObject).includes(`stack${sourceColumn}`)) {
+            let returnedLetterArray = stackObject[`stack${sourceColumn}`]
 
-                let destinationArray = stackObject[`stack${destinationColumn}`]
+            let arrayToPush = returnedLetterArray.splice(
+                returnedLetterArray.length - numberToMove,
+                numberToMove
+            )
 
-                destinationArray.push(letterToAdd)
+            let destinationArray = stackObject[`stack${destinationColumn}`]
+            for (let i = 0; i < arrayToPush.length; i++) {
+                destinationArray.push(arrayToPush[i])
             }
-            letLastLetterInEachArray = `${
-                stackObject[`stack${1}`][stackObject[`stack${1}`].length - 1]
-            }${stackObject[`stack${2}`][stackObject[`stack${2}`].length - 1]}${
-                stackObject[`stack${3}`][stackObject[`stack${3}`].length - 1]
-            }${stackObject[`stack${4}`][stackObject[`stack${4}`].length - 1]}${
-                stackObject[`stack${5}`][stackObject[`stack${5}`].length - 1]
-            }${stackObject[`stack${6}`][stackObject[`stack${6}`].length - 1]}${
-                stackObject[`stack${7}`][stackObject[`stack${7}`].length - 1]
-            }${stackObject[`stack${8}`][stackObject[`stack${8}`].length - 1]}${
-                stackObject[`stack${9}`][stackObject[`stack${9}`].length - 1]
-            }`
         }
+        letLastLetterInEachArray = `${
+            stackObject[`stack${1}`][stackObject[`stack${1}`].length - 1]
+        }${stackObject[`stack${2}`][stackObject[`stack${2}`].length - 1]}${
+            stackObject[`stack${3}`][stackObject[`stack${3}`].length - 1]
+        }${stackObject[`stack${4}`][stackObject[`stack${4}`].length - 1]}${
+            stackObject[`stack${5}`][stackObject[`stack${5}`].length - 1]
+        }${stackObject[`stack${6}`][stackObject[`stack${6}`].length - 1]}${
+            stackObject[`stack${7}`][stackObject[`stack${7}`].length - 1]
+        }${stackObject[`stack${8}`][stackObject[`stack${8}`].length - 1]}${
+            stackObject[`stack${9}`][stackObject[`stack${9}`].length - 1]
+        }`
+        console.log(letLastLetterInEachArray)
     }
 }
 
